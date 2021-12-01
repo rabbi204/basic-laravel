@@ -33,7 +33,7 @@
                                         <tr>
                                             <th scope="row">{{ $loop -> index + 1 }}</th>
                                             <td>{{ $slider -> title }}</td>
-                                            <td>{{ $slider -> description }}</td>
+                                            <td>{{ $slider -> desc }}</td>
                                             <td><img src="{{ asset($slider -> image) }}" style="height: 43px; width:62px;" alt="brand logo"></td>                                       
                                             <td>
                                                 <a href="{{ route('brand.edit', $slider -> id) }}" class="btn btn-sm btn-warning">Edit</a>

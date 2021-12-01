@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Slider Description</label>
-                        <textarea class="form-control" id="description" placeholder="description....." rows="3"></textarea>
+                        <textarea class="form-control" name="description" placeholder="description....." rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="image">Slider Image</label>

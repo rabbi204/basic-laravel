@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         Slider::create([
             'title'  => $request -> title,
-            'description'  => $request -> description,
+            'desc'  => $request -> description,
             'image'  => $last_img,
         ]);
         return redirect()-> route('home.slider') -> with("success",'Slider Added Successful');
