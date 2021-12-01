@@ -5,8 +5,8 @@
     <div class="py-12">
         <div class="container">
             <div class="row">
-                <a href="{{ route('add.slider') }}" class="btn btn-primary btn-sm">Add Slider</a>
                 <div class="col-md-12">
+
                     <div class="card">
                         @if (session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -15,17 +15,18 @@
                             </div>
                         @endif
                         <div class="card-header">
-                            All Slider
+                            <strong>All Slider</strong>
+                            <a href="{{ route('add.slider') }}" class="btn btn-primary btn-sm float-right d-inline">Add Slider</a>
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col" width="5%">SL No</th>
-                                    <th scope="col" width="15%">Slider Title</th>
-                                    <th scope="col" width="15%">Description</th>
-                                    <th scope="col" width="15%">Slider Image</th>
-                                    <th scope="col" width="15%">Action</th>
+                                    <th scope="col">SL No</th>
+                                    <th scope="col">Slider Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Slider Image</th>
+                                    <th scope="col">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -33,11 +34,11 @@
                                         <tr>
                                             <th scope="row">{{ $loop -> index + 1 }}</th>
                                             <td>{{ $slider -> title }}</td>
-                                            <td>{{ $slider -> desc }}</td>
-                                            <td><img src="{{ asset($slider -> image) }}" style="height: 43px; width:62px;" alt="brand logo"></td>                                       
+                                            <td >{{ $slider -> desc }}</td>
+                                            <td><img src="{{ asset($slider -> image) }}" style="height: 43px; width:62px;" alt="brand logo"></td>
                                             <td>
-                                                <a href="{{ route('brand.edit', $slider -> id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="{{ route('brand.delete', $slider -> id) }}" onclick="return confirm('Are you sure to delete')" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href="{{ route('slider.edit', $slider -> id) }}" class="btn btn-sm btn-warning d-inline">Edit</a>
+                                                <a href="{{ route('slider.delete', $slider -> id) }}" onclick="return confirm('Are you sure to delete')" class="btn btn-sm btn-danger d-inline">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

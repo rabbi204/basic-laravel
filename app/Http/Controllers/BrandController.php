@@ -74,6 +74,7 @@ class BrandController extends Controller
 
         $brand_image = $request -> file('brand_image');
 
+
         if($brand_image){
             $name_gen = hexdec(uniqid());
             $img_ext = strtolower($brand_image -> getClientOriginalExtension());
