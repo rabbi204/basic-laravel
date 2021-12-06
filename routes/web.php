@@ -4,9 +4,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Models\Brand;
 use App\Models\HomeAbout;
+use App\Models\Multipic;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +21,8 @@ Route::get('/email/verify', function () {
 Route::get('/', function () {
     $brands= Brand::all();
     $abouts= HomeAbout::first();
-    return view('home',compact('brands','abouts'));
+    $multipics = Multipic::all();
+    return view('home',compact('brands','abouts','multipics'));
 });
 
 Route::get('/home', function () {
@@ -65,6 +68,25 @@ Route::post('about/store', [AboutController::class, 'storeAbout']) -> name('abou
 Route::get('about/edit/{id}', [AboutController::class, 'editAbout']) -> name('about.edit');
 Route::post('about/update/{id}', [AboutController::class, 'updateAbout']) -> name('about.update');
 Route::get('about/delete/{id}', [AboutController::class, 'deleteAbout']) -> name('about.delete');
+
+// portfolio page route
+Route::get('portfolio', [AboutController::class, 'portfolio']) -> name('portfolio');
+
+// Contact route
+Route::get('admin/contact', [ContactController::class, 'contactAdmin']) -> name('admin.contact');
+Route::get('admin/contact/add', [ContactController::class, 'adminAddContract']) -> name('admin.add.contact');
+Route::post('admin/contact/store', [ContactController::class, 'adminContactStore']) -> name('store.contact');
+Route::get('admin/contact/edit/{id}', [ContactController::class, 'adminContactEdit']) -> name('admin.contact.edit');
+Route::post('admin/contact/update/{id}', [ContactController::class, 'adminContactUpdate']) -> name('admin.contact.update');
+Route::get('admin/contact/delete/{id}', [ContactController::class, 'adminContactDelete']) -> name('admin.contact.delete');
+
+// Home Contact page route
+Route::get('contact', [ContactController::class, 'contact']) -> name('contact');
+// home contact page send message
+Route::post('contact/form', [ContactController::class, 'contactForm']) -> name('contact.form');
+Route::get('admin/message', [ContactController::class, 'adminMessage']) -> name('admin.message');
+Route::get('admin/message-delete/{id}', [ContactController::class, 'adminMessageDelete']) -> name('admin.message.delete');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
