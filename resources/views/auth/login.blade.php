@@ -43,6 +43,12 @@
             <div class="row justify-content-center mt-5">
                 <div class="col-xl-5 col-lg-6 col-md-10">
                     <div class="card">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{ session('success') }}</strong>
+                                <button class="btn-close" data-dismiss="alert" >&times;</button>
+                            </div>
+                        @endif
                         <div class="card-header bg-primary">
                             <div class="app-brand">
                                 <a href="/index.html">

@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChangePass;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Models\Brand;
@@ -87,6 +88,9 @@ Route::post('contact/form', [ContactController::class, 'contactForm']) -> name('
 Route::get('admin/message', [ContactController::class, 'adminMessage']) -> name('admin.message');
 Route::get('admin/message-delete/{id}', [ContactController::class, 'adminMessageDelete']) -> name('admin.message.delete');
 
+// change password user route
+Route::get('user/password', [ChangePass::class, 'changePassword']) -> name('change.password');
+Route::post('password/update', [ChangePass::class, 'updatePassword']) -> name('password.update');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
