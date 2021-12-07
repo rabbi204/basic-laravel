@@ -36,4 +36,33 @@ class ChangePass extends Controller
             return redirect() -> back() -> with('error','Current password is Invalid');
        }
     }
+    /**
+     *  profile update
+     */
+    public function profileUpdate()
+    {
+        if(Auth::user()){
+            $user = User::find(Auth::user() -> id);
+            if($user){
+                return view('admin.body.update_profile', compact('user'));
+            }
+        }
+    }
+    /**
+     *  update user profile 
+     */
+    public function updateUserProfile(Request $request)
+    {
+        $user = User::find(Auth::user() -> id);
+        if($user){
+            $user -> name = $request-> name;
+            $user -> email = $request-> email;
+            // $user -> name = $request['name'];
+            // $user -> email = $request['email'];
+            $user -> update();
+            return redirect() -> back() -> with('success','User data updated successful');
+        }else{
+            return redirect() -> back();
+        }
+    }
 }

@@ -92,6 +92,11 @@ Route::get('admin/message-delete/{id}', [ContactController::class, 'adminMessage
 Route::get('user/password', [ChangePass::class, 'changePassword']) -> name('change.password');
 Route::post('password/update', [ChangePass::class, 'updatePassword']) -> name('password.update');
 
+// profile update
+Route::get('user/profile', [ChangePass::class, 'profileUpdate']) -> name('profile.update');
+Route::post('user/profile/update', [ChangePass::class, 'updateUserProfile']) -> name('update.user.profile');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 

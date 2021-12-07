@@ -138,7 +138,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="profile.html"> <i class="mdi mdi-account"></i> My Profile </a>
+                                            <a href="{{ route('profile.update') }}"> <i class="mdi mdi-account"></i> My Profile </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('change.password') }}"> <i class="mdi mdi-email"></i> Change Password </a>
